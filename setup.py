@@ -62,7 +62,7 @@ if sys.argv[-1] == 'publish':
 LONG_DESCRIPTION = open('README.rst').read()
 
 setup(
-    name='django-admin2',
+    name='djadmin2-theme-1995',
     version=version,
     description="A 1995-era theme for django-admin2.",
     long_description=LONG_DESCRIPTION,
