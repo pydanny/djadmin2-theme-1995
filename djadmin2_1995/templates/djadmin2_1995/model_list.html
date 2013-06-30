@@ -5,29 +5,27 @@
 
 {% block page_title %}{% blocktrans with model_name=model_name %}Select {{ model_name }} to change{% endblocktrans %}{% endblock page_title %}
 
-{% block javascript %}{{ block.super }}
-<script src="/static/themes/bootstrap/js/actions.js"></script>
-{% endblock javascript %}
 
 {% block breadcrumbs %}
-    <li><a href="{% url "admin2:dashboard" %}">Home</a> <span class="divider">/</span></li>
-    <li><a href="{% url "admin2:app_index" app_label=app_label %}">{{ app_label|title }}</a> <span class="divider">/</span></li>
-    <li class="active">{{ model_name_pluralized|title }}</li>
+    <a href="{% url "admin2:dashboard" %}">Home</a> |
+    <a href="{% url "admin2:app_index" app_label=app_label %}">{{ app_label|title }}</a> |
+    {{ model_name_pluralized|title }}
 {% endblock breadcrumbs %}
 
 {% block content %}
 
 {% if search_fields %}
-	<div class="row">
-		<div class="span12">
-			<form method="get" class="form-search">
-				<div class="input-append">
-					<input type="text" class="input-medium search-query" placeholder="Search Term" name="q" value="{{search_term}}"/>
-					<button class="btn" type="button"><i class="icon-search"></i> Search</button>
-				</div>
-			</form>
-		</div>
-	</div>
+	<form method="get" class="form-search">
+        <table>
+            <tr>
+		        <td>
+			        <input type="text" placeholder="Search Term" name="q" value="{{search_term}}"/>
+			    </td>
+			    <td>
+			        <button type="button"> Search</button>
+			    </td>
+        </table>
+	</form>
 {% endif %}
 
 
