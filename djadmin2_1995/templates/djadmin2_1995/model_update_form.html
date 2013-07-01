@@ -11,10 +11,10 @@
     <a href="{% url "admin2:app_index" app_label=app_label %}">{{ app_label|title }}</a> |
     <a href="{% url view|admin2_urlname:"index" %}">{{ model_name_pluralized|title }}</a> |
     {% if action == 'Add' %}
-	<strong>{{ action }}</strong> |
+    	<strong>{{ action }}</strong>
     {% else %}
-    <a href="{% url view|admin2_urlname:"detail" pk=object.pk %}">{{ object }}</a> |
-    {% trans 'Change' %}
+        <a href="{% url view|admin2_urlname:"detail" pk=object.pk %}">{{ object }}</a> |
+        {% trans 'Change' %}
     {% endif %}
 
 {% endblock breadcrumbs %}
@@ -22,11 +22,11 @@
 
 {% block content %}
 
-<div class="row-fluid">
-    <div class="span12">
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            <table>
+            {{ form }}
+            </table>
 
 			{% for formset in inlines %}
 			<h4>{{ formset.model|model_verbose_name_plural|capfirst }}</h4>
@@ -62,14 +62,11 @@
             {% if object %}
             <a class="btn btn-small btn-danger" href="{% url view|admin2_urlname:'delete' pk=object.pk %}">{% trans "Delete" %}</a>
             {% endif %}
-
-            <div class="pull-right">
+            <p>
                 <button class="btn btn-small" type="submit" name="_addanother">{% trans "Save and add another" %}</button>
                 <button class="btn btn-small" type="submit" name="_continue">{% trans "Save and continue editing" %}</button>
                 <button class="btn btn-small btn-success" type="submit" name="_save">{% trans "Save" %}</button>
-            </div>
+            </p>
         </form>
-    </div>
-</div>
 
 {% endblock content %}
