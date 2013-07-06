@@ -4,6 +4,11 @@ djadmin2-theme-1995
 
 A 1995-era admin theme for Django Admin2. 
 
+Warning
+========
+
+This is silly. Don't use this or base your theme off this project.
+
 Why? (silly)
 ============
 
